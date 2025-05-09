@@ -12,11 +12,11 @@ import org.bukkit.NamespacedKey;
  *   <li>最少需要1个、最多9个输入材料</li>
  * </ul>
  *
- * @see RecipeRegistryAPI#createShapelessRecipe()
- * @see RecipeRegistryAPI#createShapelessRecipe(NamespacedKey, int)
+ * @see RecipeRegistry#createShapelessRecipe()
+ * @see RecipeRegistry#createShapelessRecipe(NamespacedKey, int)
  */
 @SuppressWarnings("unused")
-public interface ArtisanShapelessRecipeAPI {
+public interface ArtisanShapelessRecipe {
 
     /**
      * 添加单个材料到合成配方。

@@ -1,6 +1,5 @@
 package io.github.moyusowo.neoartisanapi.api.recipe;
 
-import io.github.moyusowo.neoartisanapi.api.item.ItemRegistryAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.jetbrains.annotations.NotNull;
@@ -16,19 +15,19 @@ import org.jetbrains.annotations.NotNull;
  *
  * <p>通过 {@link org.bukkit.Bukkit#getServicesManager()} 获取实例。</p>
  *
- * @see ArtisanShapedRecipeAPI
- * @see ArtisanShapelessRecipeAPI
+ * @see ArtisanShapedRecipe
+ * @see ArtisanShapelessRecipe
  */
 @SuppressWarnings("unused")
-public interface RecipeRegistryAPI {
+public interface RecipeRegistry {
 
     /**
      * 获取自定义合成配方注册表管理器的实例。
      *
      * @return 自定义合成配方注册表管理器的实例
      */
-    static RecipeRegistryAPI getRecipeRegistryManager() {
-        return Bukkit.getServicesManager().load(RecipeRegistryAPI.class);
+    static RecipeRegistry getRecipeRegistryManager() {
+        return Bukkit.getServicesManager().load(RecipeRegistry.class);
     }
 
     /**
@@ -47,31 +46,34 @@ public interface RecipeRegistryAPI {
      * @param line3 第三行配方模式（3字符，不能为null）
      * @return 配方构建器实例（不会为null）
      * @throws IllegalArgumentException 如果格式不符合3字符长度或含非法字符
-     * @see ArtisanShapedRecipeAPI
+     * @see ArtisanShapedRecipe
      */
-    @NotNull ArtisanShapedRecipeAPI createShapedRecipe(@NotNull String line1, @NotNull String line2, @NotNull String line3);
+    @NotNull
+    ArtisanShapedRecipe createShapedRecipe(@NotNull String line1, @NotNull String line2, @NotNull String line3);
 
     /**
      * 创建基础无序合成配方模板。
      *
-     * <p>通过返回的 {@link ArtisanShapelessRecipeAPI} 继续添加材料</p>
+     * <p>通过返回的 {@link ArtisanShapelessRecipe} 继续添加材料</p>
      *
      * @return 配方构建器实例（不会为null）
-     * @see ArtisanShapelessRecipeAPI
+     * @see ArtisanShapelessRecipe
      */
-    @NotNull ArtisanShapelessRecipeAPI createShapelessRecipe();
+    @NotNull
+    ArtisanShapelessRecipe createShapelessRecipe();
 
     /**
      * 创建预设结果的无序合成配方模板。
      *
-     * <p>通过返回的 {@link ArtisanShapelessRecipeAPI} 继续添加材料</p>
+     * <p>通过返回的 {@link ArtisanShapelessRecipe} 继续添加材料</p>
      *
      * @param result 合成结果物品ID（不能为null）
      * @param count 产出数量（不能超过堆叠上限）
      * @return 配方构建器实例（不会为null）
      * @throws IllegalArgumentException 如果数量超出范围或物品未注册
-     * @see ArtisanShapelessRecipeAPI
+     * @see ArtisanShapelessRecipe
      */
-    @NotNull ArtisanShapelessRecipeAPI createShapelessRecipe(NamespacedKey result, int count);
+    @NotNull
+    ArtisanShapelessRecipe createShapelessRecipe(NamespacedKey result, int count);
 
 }

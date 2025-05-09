@@ -24,15 +24,15 @@ import org.jetbrains.annotations.NotNull;
  * @see org.bukkit.plugin.ServicesManager
  */
 @SuppressWarnings("unused")
-public interface AttributeTypeRegistryAPI {
+public interface AttributeTypeRegistry {
 
     /**
      * 获取属性数据类型注册表的实例。
      *
      * @return 属性数据类型注册表的实例
      */
-    static AttributeTypeRegistryAPI getAttributeTypeRegistryManager() {
-        return Bukkit.getServicesManager().load(AttributeTypeRegistryAPI.class);
+    static AttributeTypeRegistry getAttributeTypeRegistryManager() {
+        return Bukkit.getServicesManager().load(AttributeTypeRegistry.class);
     }
 
     /**
@@ -69,7 +69,7 @@ public interface AttributeTypeRegistryAPI {
      * @return 对应的Java类型（不会为null）
      * @throws IllegalArgumentException 如果类型未注册
      * @see PersistentDataType#getPrimitiveType()
-     * @apiNote 调用该方法之前应该总是调用 {@link AttributeTypeRegistryAPI#hasAttributeType(String)}
+     * @apiNote 调用该方法之前应该总是调用 {@link AttributeTypeRegistry#hasAttributeType(String)}
      */
     @NotNull Class<?> getAttributeJavaType(@NotNull String typeName);
 
@@ -82,7 +82,7 @@ public interface AttributeTypeRegistryAPI {
      * @return 对应的PDC持久化类型（不会为null）
      * @throws IllegalArgumentException 如果类型未注册
      * @see org.bukkit.persistence.PersistentDataContainer
-     * @apiNote 调用该方法之前应该总是调用 {@link AttributeTypeRegistryAPI#hasAttributeType(String)}
+     * @apiNote 调用该方法之前应该总是调用 {@link AttributeTypeRegistry#hasAttributeType(String)}
      */
     @NotNull PersistentDataType<?, ?> getAttributePDCType(@NotNull String typeName);
 }

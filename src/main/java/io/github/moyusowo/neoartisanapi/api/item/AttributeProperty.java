@@ -1,23 +1,22 @@
 package io.github.moyusowo.neoartisanapi.api.item;
 
-import io.github.moyusowo.neoartisanapi.api.attribute.AttributeTypeRegistryAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("unused")
-public interface AttributePropertyAPI {
+public interface AttributeProperty {
 
     /**
      * 获取新的自定义物品属性配置实例。
      *
      * @return 新的自定义物品属性配置实例
      */
-    static AttributePropertyAPI createAttributeProperty() {
-        return Bukkit.getServicesManager().load(AttributePropertyAPI.class);
+    static AttributeProperty createAttributeProperty() {
+        return Bukkit.getServicesManager().load(AttributeProperty.class);
     }
 
-    AttributePropertyAPI empty();
+    AttributeProperty empty();
 
     void addGlobalAttribute(NamespacedKey attributeKey, Object value);
 

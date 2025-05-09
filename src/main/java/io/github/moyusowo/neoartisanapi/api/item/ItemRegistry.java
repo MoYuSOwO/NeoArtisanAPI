@@ -1,12 +1,10 @@
 package io.github.moyusowo.neoartisanapi.api.item;
 
-import io.github.moyusowo.neoartisanapi.api.attribute.AttributeTypeRegistryAPI;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
-import org.checkerframework.checker.units.qual.N;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,19 +23,19 @@ import java.util.List;
  * <p>通过 {@link org.bukkit.Bukkit#getServicesManager()} 获取实例。</p>
  *
  * @apiNote 部分方法涉及持久化操作，请在主线程调用
- * @see ArtisanItemAPI
+ * @see ArtisanItem
  * @see org.bukkit.plugin.ServicesManager
  */
 @SuppressWarnings("unused")
-public interface ItemRegistryAPI {
+public interface ItemRegistry {
 
     /**
      * 获取自定义物品注册表管理器的实例。
      *
      * @return 自定义物品注册表管理器的实例
      */
-    static ItemRegistryAPI getItemRegistryManager() {
-        return Bukkit.getServicesManager().load(ItemRegistryAPI.class);
+    static ItemRegistry getItemRegistryManager() {
+        return Bukkit.getServicesManager().load(ItemRegistry.class);
     }
 
     /**
@@ -57,12 +55,12 @@ public interface ItemRegistryAPI {
      * @param weaponProperty 武器属性配置（不能为null，可为EMPTY）
      * @param maxDurability 最大耐久值（可选）
      * @param armorProperty 护甲属性配置（不能为null，可为EMPTY）
-     * @param attributePropertyAPI 属性系统配置（不能为null，可为EMPTY）
+     * @param attributeProperty 属性系统配置（不能为null，可为EMPTY）
      * @throws IllegalArgumentException 如果参数无效或ID已存在
      * @see FoodProperty
      * @see WeaponProperty
      * @see ArmorProperty
-     * @see AttributePropertyAPI
+     * @see AttributeProperty
      */
     @Deprecated
     void registerItem(
@@ -76,7 +74,7 @@ public interface ItemRegistryAPI {
             @NotNull WeaponProperty weaponProperty,
             @Nullable Integer maxDurability,
             @NotNull ArmorProperty armorProperty,
-            @NotNull AttributePropertyAPI attributePropertyAPI
+            @NotNull AttributeProperty attributeProperty
     );
 
     /**
@@ -206,12 +204,12 @@ public interface ItemRegistryAPI {
         /**
          * 设置物品的属性系统配置。
          *
-         * @param attributeProperty 属性系统配置（不能为null，使用 {@link AttributePropertyAPI#empty()} 表示无属性）
+         * @param attributeProperty 属性系统配置（不能为null，使用 {@link AttributeProperty#empty()} 表示无属性）
          * @return 当前构建器实例
          * @throws IllegalArgumentException 如果attributeProperty为null
-         * @see AttributePropertyAPI
+         * @see AttributeProperty
          */
-        @NotNull Builder attributeProperty(AttributePropertyAPI attributeProperty);
+        @NotNull Builder attributeProperty(AttributeProperty attributeProperty);
 
     }
 
@@ -295,10 +293,11 @@ public interface ItemRegistryAPI {
      * @param registryId 物品注册ID（不能为null）
      * @return 物品API接口实例（不会为null）
      * @throws IllegalArgumentException 如果物品未注册
-     * @see ArtisanItemAPI
-     * @apiNote 调用该方法之前应该总是调用 {@link ItemRegistryAPI#isArtisanItem(NamespacedKey)} 以检查有效性
+     * @see ArtisanItem
+     * @apiNote 调用该方法之前应该总是调用 {@link ItemRegistry#isArtisanItem(NamespacedKey)} 以检查有效性
      */
-    @NotNull ArtisanItemAPI getArtisanItemAPI(@NotNull NamespacedKey registryId);
+    @NotNull
+    ArtisanItem getArtisanItemAPI(@NotNull NamespacedKey registryId);
 
     /**
      * 通过物品堆获取物品API实例。
@@ -307,9 +306,10 @@ public interface ItemRegistryAPI {
      * @return 物品API接口实例（不会为null）
      * @throws IllegalArgumentException 如果不是有效自定义物品
      * @see #getArtisanItemAPI(NamespacedKey)
-     * @apiNote 调用该方法之前应该总是调用 {@link ItemRegistryAPI#isArtisanItem(ItemStack)} 以检查有效性
+     * @apiNote 调用该方法之前应该总是调用 {@link ItemRegistry#isArtisanItem(ItemStack)} 以检查有效性
      */
-    @NotNull ArtisanItemAPI getArtisanItemAPI(ItemStack itemStack);
+    @NotNull
+    ArtisanItem getArtisanItemAPI(ItemStack itemStack);
 
     /**
      * 读取物品堆上的动态属性值。

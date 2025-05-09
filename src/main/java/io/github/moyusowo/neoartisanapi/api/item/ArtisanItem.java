@@ -13,13 +13,13 @@ import org.jetbrains.annotations.Nullable;
  * 和各种扩展属性。所有自定义物品都应有唯一的 {@link NamespacedKey} 标识。</p>
  *
  * @apiNote 不保证API的线程安全
- * @see AttributePropertyAPI
+ * @see AttributeProperty
  * @see WeaponProperty
  * @see FoodProperty
  * @see ArmorProperty
  */
 @SuppressWarnings("unused")
-public interface ArtisanItemAPI {
+public interface ArtisanItem {
 
     /**
      * 通过物品堆判断是否为此自定义物品。
@@ -91,11 +91,11 @@ public interface ArtisanItemAPI {
     /**
      * 获取此物品的属性系统配置。
      *
-     * @return 属性配置对象，不会返回null，可以使用 {@link AttributePropertyAPI#isEmpty()} 判空
-     * @see AttributePropertyAPI
+     * @return 属性配置对象，不会返回null，可以使用 {@link AttributeProperty#isEmpty()} 判空
+     * @see AttributeProperty
      */
     @NotNull
-    AttributePropertyAPI getAttributeProperty();
+    AttributeProperty getAttributeProperty();
 
     /**
      * 获取此物品的武器属性配置。

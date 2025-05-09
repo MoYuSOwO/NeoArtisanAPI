@@ -13,10 +13,10 @@ import org.jetbrains.annotations.NotNull;
  *   <li>最终注册配方到服务器</li>
  * </ul>
  *
- * @see RecipeRegistryAPI#createShapedRecipe(String, String, String)
+ * @see RecipeRegistry#createShapedRecipe(String, String, String)
  */
 @SuppressWarnings("unused")
-public interface ArtisanShapedRecipeAPI {
+public interface ArtisanShapedRecipe {
 
     /**
      * 将配方符号绑定到自定义物品。
@@ -52,7 +52,7 @@ public interface ArtisanShapedRecipeAPI {
      *
      * <p>调用过本方法之后不能再调用。</p>
      *
-     * @see RecipeRegistryAPI
+     * @see RecipeRegistry
      */
     void build();
 

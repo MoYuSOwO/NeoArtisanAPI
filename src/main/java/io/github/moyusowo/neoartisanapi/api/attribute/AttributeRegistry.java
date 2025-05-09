@@ -19,15 +19,15 @@ import org.jetbrains.annotations.NotNull;
  * @apiNote 不保证API的线程安全
  */
 @SuppressWarnings("unused")
-public interface AttributeRegistryAPI {
+public interface AttributeRegistry {
 
     /**
      * 获取物品属性注册表的实例。
      *
      * @return 物品属性注册表的实例
      */
-    static AttributeRegistryAPI getAttributeRegistryManager() {
-        return Bukkit.getServicesManager().load(AttributeRegistryAPI.class);
+    static AttributeRegistry getAttributeRegistryManager() {
+        return Bukkit.getServicesManager().load(AttributeRegistry.class);
     }
 
     /**
@@ -76,7 +76,7 @@ public interface AttributeRegistryAPI {
      * @param attributeKey 要查询的属性键（不能为null）
      * @return 注册时指定的类型名称（不会为null）
      * @throws IllegalArgumentException 如果属性未注册
-     * @apiNote 调用该方法之前应该总是调用 {@link AttributeRegistryAPI#hasGlobalAttribute(NamespacedKey)}
+     * @apiNote 调用该方法之前应该总是调用 {@link AttributeRegistry#hasGlobalAttribute(NamespacedKey)}
      */
     @NotNull String getGlobalAttributeTypeName(@NotNull NamespacedKey attributeKey);
 
@@ -86,7 +86,7 @@ public interface AttributeRegistryAPI {
      * @param attributeKey 要查询的属性键（不能为null）
      * @return 注册时指定的类型名称（不会为null）
      * @throws IllegalArgumentException 如果属性未注册
-     * @apiNote 调用该方法之前应该总是调用 {@link AttributeRegistryAPI#hasItemstackAttribute(NamespacedKey)}
+     * @apiNote 调用该方法之前应该总是调用 {@link AttributeRegistry#hasItemstackAttribute(NamespacedKey)}
      */
     @NotNull String getItemstackAttributeTypeName(@NotNull NamespacedKey attributeKey);
 }

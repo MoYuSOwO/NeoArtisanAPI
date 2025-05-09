@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
  *
  * @see RecipeRegistryAPI#createShapedRecipe(String, String, String)
  */
+@SuppressWarnings("unused")
 public interface ArtisanShapedRecipeAPI {
 
     /**

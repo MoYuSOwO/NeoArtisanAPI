@@ -18,6 +18,7 @@ import org.jetbrains.annotations.Nullable;
  * @see FoodProperty
  * @see ArmorProperty
  */
+@SuppressWarnings("unused")
 public interface ArtisanItemAPI {
 
     /**

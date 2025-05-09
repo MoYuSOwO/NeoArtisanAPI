@@ -1,5 +1,6 @@
 package io.github.moyusowo.neoartisanapi.api.attribute;
 
+import org.bukkit.Bukkit;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,7 +23,17 @@ import org.jetbrains.annotations.NotNull;
  * @see org.bukkit.persistence.PersistentDataType
  * @see org.bukkit.plugin.ServicesManager
  */
+@SuppressWarnings("unused")
 public interface AttributeTypeRegistryAPI {
+
+    /**
+     * 获取属性数据类型注册表的实例。
+     *
+     * @return 属性数据类型注册表的实例
+     */
+    static AttributeTypeRegistryAPI getAttributeTypeRegistryManager() {
+        return Bukkit.getServicesManager().load(AttributeTypeRegistryAPI.class);
+    }
 
     /**
      * 注册属性数据类型与持久化类型的映射关系。

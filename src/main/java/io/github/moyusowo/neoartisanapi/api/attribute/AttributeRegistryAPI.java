@@ -1,5 +1,6 @@
 package io.github.moyusowo.neoartisanapi.api.attribute;
 
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,7 +18,17 @@ import org.jetbrains.annotations.NotNull;
  *
  * @apiNote 不保证API的线程安全
  */
+@SuppressWarnings("unused")
 public interface AttributeRegistryAPI {
+
+    /**
+     * 获取物品属性注册表的实例。
+     *
+     * @return 物品属性注册表的实例
+     */
+    static AttributeRegistryAPI getAttributeRegistryManager() {
+        return Bukkit.getServicesManager().load(AttributeRegistryAPI.class);
+    }
 
     /**
      * 注册一个全局属性类型。

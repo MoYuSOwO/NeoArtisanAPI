@@ -1,5 +1,7 @@
 package io.github.moyusowo.neoartisanapi.api.recipe;
 
+import io.github.moyusowo.neoartisanapi.api.item.ItemRegistryAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,7 +19,17 @@ import org.jetbrains.annotations.NotNull;
  * @see ArtisanShapedRecipeAPI
  * @see ArtisanShapelessRecipeAPI
  */
+@SuppressWarnings("unused")
 public interface RecipeRegistryAPI {
+
+    /**
+     * 获取自定义合成配方注册表管理器的实例。
+     *
+     * @return 自定义合成配方注册表管理器的实例
+     */
+    static RecipeRegistryAPI getRecipeRegistryManager() {
+        return Bukkit.getServicesManager().load(RecipeRegistryAPI.class);
+    }
 
     /**
      * 创建有序合成配方模板。

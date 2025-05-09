@@ -15,6 +15,7 @@ import org.bukkit.NamespacedKey;
  * @see RecipeRegistryAPI#createShapelessRecipe()
  * @see RecipeRegistryAPI#createShapelessRecipe(NamespacedKey, int)
  */
+@SuppressWarnings("unused")
 public interface ArtisanShapelessRecipeAPI {
 
     /**

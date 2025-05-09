@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id("xyz.jpenilla.run-paper") version "2.3.1"
+    id 'maven-publish'
 }
 
 group = 'io.github.moyusowo'
@@ -20,6 +21,51 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
+}
+
+javadoc {
+    include 'io/github/moyusowo/neoartisanapi/api/**'
+    include 'io/github/moyusowo/neoartisanapi/record/**'
+    failOnError = false
+}
+
+tasks.register('apiJar', Jar) {
+    archiveClassifier = 'api'
+
+    from(sourceSets.main.output) {
+        include 'io/github/moyusowo/neoartisanapi/api/**'
+        include 'io/github/moyusowo/neoartisanapi/record/**'
+    }
+
+    from(javadoc.outputs.files) {
+        include 'io/github/moyusowo/neoartisanapi/api/**'
+        include 'io/github/moyusowo/neoartisanapi/record/**'
+        into 'META-INF/javadoc'
+    }
+
+    dependsOn javadoc
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact apiJar
+            artifactId = 'neoartisan-api'
+        }
+    }
+
+    repositories {
+        maven { url = layout.buildDirectory.dir("../repo") }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+}
+
+tasks.withType(Javadoc).configureEach {
+    options.encoding = "UTF-8"
+    options.addStringOption('Xdoclint:none', '-quiet')
 }
 
 tasks {

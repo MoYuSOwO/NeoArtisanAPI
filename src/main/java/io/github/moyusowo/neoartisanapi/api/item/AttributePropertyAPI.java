@@ -1,12 +1,9 @@
-package io.github.moyusowo.neoartisanapi.record.item;
+package io.github.moyusowo.neoartisanapi.api.item;
 
 import org.bukkit.NamespacedKey;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public interface AttributeProperty {
+public interface AttributePropertyAPI {
 
     void addGlobalAttribute(NamespacedKey attributeKey, Object value);
 

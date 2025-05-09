@@ -1,9 +1,5 @@
 package io.github.moyusowo.neoartisanapi.api.item;
 
-import io.github.moyusowo.neoartisanapi.record.item.ArmorProperty;
-import io.github.moyusowo.neoartisanapi.record.item.AttributeProperty;
-import io.github.moyusowo.neoartisanapi.record.item.FoodProperty;
-import io.github.moyusowo.neoartisanapi.record.item.WeaponProperty;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -45,12 +41,12 @@ public interface ItemRegistryAPI {
      * @param weaponProperty 武器属性配置（不能为null，可为EMPTY）
      * @param maxDurability 最大耐久值（可选）
      * @param armorProperty 护甲属性配置（不能为null，可为EMPTY）
-     * @param attributeProperty 属性系统配置（不能为null，可为EMPTY）
+     * @param attributePropertyAPI 属性系统配置（不能为null，可为EMPTY）
      * @throws IllegalArgumentException 如果参数无效或ID已存在
      * @see FoodProperty
      * @see WeaponProperty
      * @see ArmorProperty
-     * @see AttributeProperty
+     * @see AttributePropertyAPI
      */
     void registerItem(
             @NotNull NamespacedKey registryId,
@@ -63,7 +59,7 @@ public interface ItemRegistryAPI {
             @NotNull WeaponProperty weaponProperty,
             @Nullable Integer maxDurability,
             @NotNull ArmorProperty armorProperty,
-            @NotNull AttributeProperty attributeProperty
+            @NotNull AttributePropertyAPI attributePropertyAPI
     );
 
     /**

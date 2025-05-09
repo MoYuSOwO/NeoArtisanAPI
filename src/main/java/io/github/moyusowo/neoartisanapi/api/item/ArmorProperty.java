@@ -1,4 +1,4 @@
-package io.github.moyusowo.neoartisanapi.record.item;
+package io.github.moyusowo.neoartisanapi.api.item;
 
 import org.bukkit.inventory.EquipmentSlot;
 

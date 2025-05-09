@@ -1,9 +1,5 @@
 package io.github.moyusowo.neoartisanapi.api.item;
 
-import io.github.moyusowo.neoartisanapi.record.item.ArmorProperty;
-import io.github.moyusowo.neoartisanapi.record.item.AttributeProperty;
-import io.github.moyusowo.neoartisanapi.record.item.FoodProperty;
-import io.github.moyusowo.neoartisanapi.record.item.WeaponProperty;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -17,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
  * 和各种扩展属性。所有自定义物品都应有唯一的 {@link NamespacedKey} 标识。</p>
  *
  * @apiNote 不保证API的线程安全
- * @see AttributeProperty
+ * @see AttributePropertyAPI
  * @see WeaponProperty
  * @see FoodProperty
  * @see ArmorProperty
@@ -94,10 +90,11 @@ public interface ArtisanItemAPI {
     /**
      * 获取此物品的属性系统配置。
      *
-     * @return 属性配置对象，不会返回null，可以使用 {@link AttributeProperty#isEmpty()} 判空
-     * @see AttributeProperty
+     * @return 属性配置对象，不会返回null，可以使用 {@link AttributePropertyAPI#isEmpty()} 判空
+     * @see AttributePropertyAPI
      */
-    @NotNull AttributeProperty getAttributeProperty();
+    @NotNull
+    AttributePropertyAPI getAttributeProperty();
 
     /**
      * 获取此物品的武器属性配置。

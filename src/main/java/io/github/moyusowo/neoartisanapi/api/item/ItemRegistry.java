@@ -39,45 +39,6 @@ public interface ItemRegistry {
     }
 
     /**
-     * 注册一个新的自定义物品模板。
-     *
-     * <p>已过时，请使用新API {@link #registerItem(Builder)}</p>
-     *
-     * <p>注册后的物品可以通过 {@link #getItemStack(NamespacedKey)} 获取实例。</p>
-     *
-     * @param registryId 物品唯一标识（不能为null）
-     * @param rawMaterial 基础材质类型（不能为null）
-     * @param hasOriginalCraft 是否保留原版合成
-     * @param customModelData 自定义模型数据（可选）
-     * @param displayName 显示名称（不能为null或空）
-     * @param lore 物品描述（不能为null，可空列表）
-     * @param foodProperty 食物属性配置（不能为null，可为EMPTY）
-     * @param weaponProperty 武器属性配置（不能为null，可为EMPTY）
-     * @param maxDurability 最大耐久值（可选）
-     * @param armorProperty 护甲属性配置（不能为null，可为EMPTY）
-     * @param attributeProperty 属性系统配置（不能为null，可为EMPTY）
-     * @throws IllegalArgumentException 如果参数无效或ID已存在
-     * @see FoodProperty
-     * @see WeaponProperty
-     * @see ArmorProperty
-     * @see AttributeProperty
-     */
-    @Deprecated
-    void registerItem(
-            @NotNull NamespacedKey registryId,
-            @NotNull Material rawMaterial,
-            boolean hasOriginalCraft,
-            @Nullable Integer customModelData,
-            @NotNull String displayName,
-            @NotNull List<String> lore,
-            @NotNull FoodProperty foodProperty,
-            @NotNull WeaponProperty weaponProperty,
-            @Nullable Integer maxDurability,
-            @NotNull ArmorProperty armorProperty,
-            @NotNull AttributeProperty attributeProperty
-    );
-
-    /**
      * 构建自定义物品的构建器接口。
      * <p>使用示例：
      * <pre>{@code
@@ -210,6 +171,8 @@ public interface ItemRegistry {
          * @see AttributeProperty
          */
         @NotNull Builder attributeProperty(AttributeProperty attributeProperty);
+
+        @NotNull Builder CropKey(NamespacedKey blockKey);
 
     }
 

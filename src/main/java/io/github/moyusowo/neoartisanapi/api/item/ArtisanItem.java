@@ -104,4 +104,11 @@ public interface ArtisanItem {
      * @see ArmorProperty
      */
     @NotNull ArmorProperty getArmorProperty();
+
+    /**
+     * 获取此物品右键放置出的方块。
+     *
+     * @return 此物品右键放置出的方块的命名空间ID，如果没有返回 {@code null}
+     */
+    @Nullable NamespacedKey getCropKey();
 }

@@ -172,7 +172,7 @@ public interface ItemRegistry {
          */
         @NotNull Builder attributeProperty(AttributeProperty attributeProperty);
 
-        @NotNull Builder CropKey(NamespacedKey blockKey);
+        @NotNull Builder cropId(NamespacedKey blockKey);
 
     }
 

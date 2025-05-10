@@ -260,7 +260,7 @@ public interface ItemRegistry {
      * @apiNote 调用该方法之前应该总是调用 {@link ItemRegistry#isArtisanItem(NamespacedKey)} 以检查有效性
      */
     @NotNull
-    ArtisanItem getArtisanItemAPI(@NotNull NamespacedKey registryId);
+    ArtisanItem getArtisanItem(@NotNull NamespacedKey registryId);
 
     /**
      * 通过物品堆获取物品API实例。
@@ -268,11 +268,11 @@ public interface ItemRegistry {
      * @param itemStack 目标物品堆（不能为null）
      * @return 物品API接口实例（不会为null）
      * @throws IllegalArgumentException 如果不是有效自定义物品
-     * @see #getArtisanItemAPI(NamespacedKey)
+     * @see #getArtisanItem(NamespacedKey)
      * @apiNote 调用该方法之前应该总是调用 {@link ItemRegistry#isArtisanItem(ItemStack)} 以检查有效性
      */
     @NotNull
-    ArtisanItem getArtisanItemAPI(ItemStack itemStack);
+    ArtisanItem getArtisanItem(ItemStack itemStack);
 
     /**
      * 读取物品堆上的动态属性值。

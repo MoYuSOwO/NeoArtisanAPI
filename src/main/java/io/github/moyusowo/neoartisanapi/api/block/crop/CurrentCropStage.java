@@ -5,6 +5,10 @@ import org.bukkit.NamespacedKey;
 @SuppressWarnings("unused")
 public interface CurrentCropStage {
 
+    NamespacedKey cropId();
+
+    int stage();
+
     int getBlockState();
 
     NamespacedKey[] getDrops();
